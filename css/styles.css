@@ -1,0 +1,280 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    "Poppins",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(
+    circle at top,
+    #ffe6f0 0%,
+    #ffd1dc 45%,
+    #ffc0d6 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Contenedor principal */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  padding: 24px 20px 28px;
+  text-align: center;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0.55)
+  );
+  border-radius: 26px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    0 20px 40px rgba(255, 105, 150, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Pantallas */
+.screen {
+  animation: fadeIn 0.6s ease;
+}
+
+.screen.hidden {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* GIF en círculo */
+.gif-container {
+  width: 170px;
+  height: 170px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  position: relative;
+
+  animation: pulseGlow 3s ease-in-out infinite;
+  box-shadow: 0 10px 30px rgba(255, 120, 160, 0.45);
+}
+
+.gif-container::after {
+  content: "💝";
+  position: absolute;
+  bottom: -6px;
+  right: 6px;
+  font-size: 22px;
+  filter: drop-shadow(0 4px 6px rgba(255, 0, 90, 0.25));
+}
+
+.gif-container.circle .tenor-gif-embed {
+  width: 160%;
+  height: 160%;
+}
+
+/* Glow animado */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 10px 30px rgba(255, 120, 160, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 90, 160, 0.9);
+  }
+  100% {
+    box-shadow: 0 10px 30px rgba(255, 120, 160, 0.45);
+  }
+}
+
+/* Título */
+h1 {
+  color: #ff5f8f;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  margin-bottom: 6px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-shadow: 0 6px 14px rgba(255, 95, 143, 0.35);
+}
+
+/* Subtítulo */
+.subtitle {
+  color: #ff8fb2;
+  margin-bottom: 18px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Párrafos */
+p {
+  color: #ff6f9c;
+  margin: 6px 0;
+  font-size: 1rem;
+}
+
+/* Hint */
+.hint {
+  display: block;
+  margin-top: 12px;
+  color: #ff8fb2;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+/* Botones */
+.buttons {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn.yes {
+  background: linear-gradient(135deg, #ff5f8f, #ff9bb8);
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(255, 95, 143, 0.45);
+  animation: heartBeat 1.8s infinite;
+}
+
+.btn.yes:hover {
+  filter: brightness(1.05);
+}
+
+.btn.no {
+  background: #f2f2f2;
+  color: #777;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* Latido botón Sí */
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.05);
+  }
+  30% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.05);
+  }
+  60% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Corazones flotando */
+.heart {
+  position: fixed;
+  bottom: -40px;
+  font-size: 18px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Animaciones */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.25);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 360px) {
+  .gif-container {
+    width: 140px;
+    height: 140px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Sparkles */
+.sparkle {
+  position: fixed;
+  font-size: 14px;
+  pointer-events: none;
+  animation: sparkleFloat 3s ease-out forwards;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+  z-index: 1;
+}
+
+@keyframes sparkleFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.6);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(1.3);
+  }
+}
